@@ -3,12 +3,8 @@ Treehouse FSJS Techdegree:
 project 1 - A Random Quote Generator
 ******************************************/
 
-// For assistance: 
-  // Check the "Project Resources" section of the project instructions
-  // Reach out in your Slack community - https://treehouse-fsjs-102.slack.com/app_redirect?channel=chit-chat
-
 /*** 
- * `quotes` array 
+ * An array of Quote objects that contain source, quote,citation, year, and hashtag.
 ***/
 
 let quotes = [
@@ -42,8 +38,11 @@ let quotes = [
 
 ];
 
+//Array of background colors
+
 let colors = ['#FF864C', '#11BA92', '#FFAB69', '#FF4B56', '#C01E69', '#74305B', '#F3A660', '#F49861', '#BD494C'];
 
+//Quote that will return a color from color array at random
 let getRandomColor = () => {
   let colorIndex = Math.floor(Math.random() * colors.length);
   let randomColor = colors[colorIndex];
@@ -51,11 +50,9 @@ let getRandomColor = () => {
   
 }
 
-console.log(getRandomColor());
-
 
 /***
- * `getRandomQuote` function
+ * `getRandomQuote` function that will retrun a random object from the quotes array
 ***/
 
 let getRandomQuote = () => {
@@ -63,12 +60,12 @@ let getRandomQuote = () => {
   return randomObject = quotes[randomIndex];
   
 }
-console.log(getRandomQuote());
+
 
 
 
 /***
- * `printQuote` function
+ * `printQuote` function will call getRandomQuote() and getRandomColor(). It will also create a template literal placing information in html tags.
 ***/
 let printQuote = () => {
   getRandomQuote();
@@ -101,11 +98,11 @@ let printQuote = () => {
 
 
 /***
- * click event listener for the print quote button
- * DO NOT CHANGE THE CODE BELOW!!
+ * Adds event listener to button to generate new quote and background color
  * 
 ***/
 
 document.getElementById('load-quote').addEventListener("click", printQuote, false);
 
+//if the user does not click on button a new quote will be generated every 10 seconds.
 setInterval(function(){ printQuote(); }, 10000);
