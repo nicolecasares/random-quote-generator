@@ -44,9 +44,12 @@ let quotes = [
 ***/
 
 let getRandomQuote = () => {
-  return "Hello World!";
+  let randomIndex = Math.floor(Math.random() * quotes.length);
+  let randomObject = quotes[randomIndex];
+  return randomObject.quote;
 }
 console.log(getRandomQuote());
+
 
 
 /***
