@@ -62,8 +62,11 @@ let getRandomQuote = () => {
   
 }
 
+//if the user does not click on button a new quote will be generated every 10 seconds.
 
-
+let setTimer = () => {
+  setInterval(function(){ printQuote(); }, 10000);
+}
 
 /***
  * `printQuote` function will call getRandomQuote() and getRandomColor(). It will also create a template literal placing information in html tags.
@@ -88,8 +91,6 @@ let printQuote = () => {
 
   html += `</p>`;
 
-
-
   document.getElementById('quote-box').innerHTML = html; 
   document.querySelector('body').style.background = getRandomColor(); 
 
@@ -97,13 +98,14 @@ let printQuote = () => {
 
 }
 
-
 /***
  * Adds event listener to button to generate new quote and background color
  * 
 ***/
 
-document.getElementById('load-quote').addEventListener("click", printQuote, false);
+// document.getElementById('load-quote').addEventListener("click", printQuote, setTimer, false);
 
-//if the user does not click on button a new quote will be generated every 10 seconds.
-setInterval(function(){ printQuote(); }, 10000);
+document.getElementById('load-quote').addEventListener('click',() => {    
+  printQuote();
+  setTimer();    
+});
