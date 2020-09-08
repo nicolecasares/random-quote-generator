@@ -45,8 +45,8 @@ let quotes = [
 
 let getRandomQuote = () => {
   let randomIndex = Math.floor(Math.random() * quotes.length);
-  let randomObject = quotes[randomIndex];
-  return randomObject.quote;
+  return randomObject = quotes[randomIndex];
+  
 }
 console.log(getRandomQuote());
 
@@ -55,12 +55,42 @@ console.log(getRandomQuote());
 /***
  * `printQuote` function
 ***/
+let printQuote = () => {
+  getRandomQuote();
+  let randomQuote = randomObject.quote;
+  let randomSource = randomObject.source;
+  let randomCitation = randomObject.citation;
+  let randomYear = randomObject.year;
+  let html = `<p class="quote"> ${randomQuote} </p>
+  <p class="source"> ${randomSource} `;
+
+  if (randomCitation) {
+    html += 
+    `<span class="citation"> ${randomCitation} </span>
+    <span class="year"> ${randomYear} </span>
+    `;
+  }
+
+  html += `</p>`
+
+  document.getElementById('quote-box').innerHTML = html; 
+
+  return html;
+
+}
+
+console.log(printQuote());
+
+
 
 
 
 /***
  * click event listener for the print quote button
  * DO NOT CHANGE THE CODE BELOW!!
+ * 
 ***/
 
-// document.getElementById('load-quote').addEventListener("click", printQuote, false);
+
+
+document.getElementById('load-quote').addEventListener("click", printQuote, false);
